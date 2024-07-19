@@ -1,0 +1,22 @@
+{% extends "entidades/index.html" %}
+
+{%block titulo %}
+<h1 class="text-white font-weight-bold">Búsqueda de Maestrías</h1>
+{%endblock titulo %}
+
+{%block subtitulo %}
+<p class="text-white-75 mb-5">Encuentra la maestría que estás buscando</p>
+{%endblock subtitulo %}
+
+{%block contenido %}
+
+<form action="{% url 'encontrarMaestrias' %}" method="get">
+    {% csrf_token%}
+    <table>
+        <p>Ingrese su tema de interés: <input type="text" name="buscar" id="buscar"></p>
+    </table>
+    <input type="submit" value="Buscar">
+</form>
+
+
+{%endblock contenido %}

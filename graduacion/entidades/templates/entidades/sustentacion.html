@@ -1,0 +1,32 @@
+{% extends "entidades/index.html" %}
+
+{%block titulo %}
+<h1 class="text-white font-weight-bold">Sustentaciones</h1>
+{%endblock titulo %}
+
+{%block subtitulo %}
+<p class="text-white-75 mb-5">Registre la fecha, hora y lugar de su sustentación</p>
+{%endblock subtitulo %}
+
+{%block contenido %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha de sustentación</th>
+            <th>Lugar</th>
+            <th>Mención</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in sustentacion %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.fecha_sust }}</td>
+            <td>{{ c.lugar }}</td>
+            <td>{{ c.mencion }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>        
+{%endblock contenido %}

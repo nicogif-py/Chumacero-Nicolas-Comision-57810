@@ -1,0 +1,31 @@
+{% extends "entidades/index.html" %}
+
+{%block titulo %}
+<h1 class="text-white font-weight-bold">Maestrías</h1>
+{%endblock titulo %}
+
+{%block subtitulo %}
+<p class="text-white-75 mb-5">Conozca la variedad de programas de Maestría que le ofrece la Escuela de Posgrado</p>
+{%endblock subtitulo %}
+
+{%block contenido %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre de la Maestría</th>
+            <th>Modalidad</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for c in maestrias %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.modalidad }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{%endblock contenido %}
