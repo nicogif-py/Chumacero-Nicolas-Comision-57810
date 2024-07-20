@@ -1,0 +1,24 @@
+{% extends "entidades/index.html" %}
+
+
+{% block titulo %}
+<h1 class="text-white-75 mb-5">Avatar</h1>                                
+{% endblock titulo %}
+
+{%block subtitulo %}
+<p class="text-white-75 mb-5">Elija una nueva imagen para su avatar</p>
+
+{%endblock subtitulo %}
+
+
+{% block contenido %}   
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Actualizar Avatar">
+</form>
+
+{% endblock contenido %}

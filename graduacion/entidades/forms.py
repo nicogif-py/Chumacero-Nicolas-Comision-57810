@@ -40,4 +40,8 @@ class UserEditForm(UserChangeForm):
     
     class Meta:
         model = User
-        fields = ["email", "first_name", "last_name"]
+        fields = ["first_name", "last_name", "email"]
+
+
+class AvatarForm(forms.Form):
+    imagen = forms.ImageField(required=True)

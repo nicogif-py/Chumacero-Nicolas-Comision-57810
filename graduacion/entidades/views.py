@@ -11,6 +11,7 @@ from django.views.generic import DeleteView
 
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import PasswordChangeView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -18,6 +19,9 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     return render(request, "entidades/index.html")
+
+def acerca(request):
+    return render(request, "entidades/acerca.html")
 
 #___ Maestrías
 @login_required
@@ -217,10 +221,18 @@ def loginRequest(request):
         user = authenticate(request, username=usuario, password=clave)
         if user is not None:
             login(request, user)
+        
+        #Buscar Avatar
+            try:
+                avatar = Avatar.objects.get(user=request.user.id).imagen.url
+            except:
+                avatar = "/media/avatares/default.png"
+            finally:
+                request.session["avatar"] = avatar
+            ###
             return render(request, "entidades/index.html")
         else:
             return redirect(reverse_lazy('login'))
-
     else:
         miForm = AuthenticationForm()
 
@@ -254,4 +266,32 @@ def editProfile(request):
     else:
         miForm = UserEditForm(instance=usuario)
     return render(request, "entidades/editarPerfil.html", {"form": miForm})
+
+class CambiarClave(LoginRequiredMixin, PasswordChangeView):
+    template_name = "entidades/cambiar_clave.html"
+    success_url = reverse_lazy("home")
     
+@login_required
+def agregarAvatar(request):
+    if request.method == "POST":
+        miForm = AvatarForm(request.POST, request.FILES)
+        if miForm.is_valid():
+            usuario = User.objects.get(username=request.user)
+            imagen = miForm.cleaned_data["imagen"]
+            #Borrar avatares viejos
+            avatarViejo = Avatar.objects.filter(user=usuario)
+            if len(avatarViejo) > 0:
+                for i in range(len(avatarViejo)):
+                    avatarViejo[i].delete()
+            ####
+            avatar = Avatar(user=usuario, imagen=imagen)
+            avatar.save()
+
+            #Enviar la imagen al home
+            imagen = Avatar.objects.get(user=usuario).imagen.url
+            request.session["avatar"] = imagen
+            ####
+            return redirect(reverse_lazy("home"))
+    else:
+        miForm = AvatarForm()
+    return render(request, "entidades/agregarAvatar.html", {"form": miForm})

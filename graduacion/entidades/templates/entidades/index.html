@@ -25,7 +25,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Proceso de Graduación</a>
+                <a class="navbar-brand" href="{% url 'home' %}">Proceso de Graduación</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             {% if user.is_authenticated %}   
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -37,6 +37,9 @@
                     </ul>
                 </div>
             <p style="color:green"> [{{user.first_name}} {{user.last_name}}]</p>
+            <div class="text-center">
+                <a href="{% url 'agregar_avatar' %}"><img src="{{ request.session.avatar }}" height="40px" weight="40px" alt="foto de perfil"></a>
+            </div>
             <a class="btn btn-success" href="{% url 'perfil' %}">Perfil</a>
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
@@ -62,7 +65,7 @@
                         {%block subtitulo %}
                         <p class="text-white-75 mb-5">Bienvenido al proceso automatizado de graduación de la Escuela de Posgrado</p>
                         {%endblock subtitulo %}
-                        <a class="btn btn-primary btn-xl" href="#about">Ingresar</a>
+                        <a class="btn btn-primary btn-xl" href="{% url 'acerca' %}">Acerca de mí</a>
                     </div>
                 </div>
             </div>

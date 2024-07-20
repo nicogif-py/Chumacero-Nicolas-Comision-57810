@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Modelo del proceso de graduación
 class Maestrias(models.Model):
@@ -27,3 +28,10 @@ class Sustentacion(models.Model):
     def __str__(self):
         return f"{self.fecha_sust} en {self.lugar}"
 
+
+class Avatar(models.Model):   
+    imagen = models.ImageField(upload_to="avatares") 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user} {self.imagen}"   
