@@ -16,8 +16,14 @@ class TrabajoDeGrado(models.Model):
     tipo = models.CharField(max_length=30)
     aprobado = models.BooleanField()
 
+    def __str__(self):
+        return f"{self.titulo}"
+
 class Sustentacion(models.Model):
     fecha_sust = models.DateField()
     lugar = models.CharField(max_length=30)
     mencion = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.fecha_sust} en {self.lugar}"
 

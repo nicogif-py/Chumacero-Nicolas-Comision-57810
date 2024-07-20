@@ -10,10 +10,11 @@
 
 {%block contenido %}
 
+
 <form action="{% url 'encontrarMaestrias' %}" method="get">
     {% csrf_token%}
     <table>
-        <p>Ingrese su tema de interés: <input type="text" name="buscar" id="buscar"></p>
+        <p>Ingrese el nombre de la maestría: <input type="text" name="buscar" id="buscar"></p>
     </table>
     <input type="submit" value="Buscar">
 </form>

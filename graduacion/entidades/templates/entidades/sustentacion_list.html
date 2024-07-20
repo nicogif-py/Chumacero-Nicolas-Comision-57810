@@ -1,61 +1,54 @@
 {% extends "entidades/index.html" %}
 
 {%block titulo %}
-<h1 class="text-white font-weight-bold">Maestrías</h1>
+<h1 class="text-white font-weight-bold">Sustentaciones</h1>
 {%endblock titulo %}
 
 {%block subtitulo %}
-<p class="text-white-75 mb-5">Conozca la variedad de programas de Maestría que le ofrece la Escuela de Posgrado</p>
+<p class="text-white-75 mb-5">Registre la fecha, hora y lugar de su sustentación</p>
 {%endblock subtitulo %}
 
 {%block contenido %}
 
 <table>
     <tr>
-        <td width="200"><h2>Maestrías</h2></td>
+        <td width="200"><h2>Sustentaciones</h2></td>
         <td>
             <a
-            href="{% url 'maestriasForm' %}"
+            href="{% url 'sustentacionCreate' %}"
             class="btn btn-primary btn-sm"
             ><i class="fa fa-plus fa-lg" title="Crear"> </i>
             </a>
-        </td>
-        <td>
-            <a
-            href="{% url 'buscarMaestrias' %}"
-            class="btn btn-primary btn-sm"
-            ><i class="fa fa-search fa-lg" title="Buscar"> </i>
-            </a>
-                    
         </td>        
     </tr>
 </table>
-
 
 <table class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nombre de la Maestría</th>
-            <th>Modalidad</th>
+            <th>Fecha de sustentación</th>
+            <th>Lugar</th>
+            <th>Mención</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-    {% for c in maestrias %}
+    {% for c in sustentacion_list %}
         <tr>
             <td>{{ c.id }}</td>
-            <td>{{ c.nombre }}</td>
-            <td>{{ c.modalidad }}</td>
+            <td>{{ c.fecha_sust }}</td>
+            <td>{{ c.lugar }}</td>
+            <td>{{ c.mencion }}</td>
             <td>
                 <a
-                  href="{% url 'maestriasUpdate' c.id %}"
+                  href="{% url 'sustentacionUpdate' c.id %}"
                   class="btn btn-primary"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                   ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
                 </a>
                 <a
-                  href="{% url 'maestriasDelete' c.id %}"
+                  href="{% url 'sustentacionDelete' c.id %}"
                   class="btn btn-danger"
                   style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                   ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
@@ -64,6 +57,5 @@
         </tr>
     {% endfor %}
     </tbody>
-</table>
-
+</table>        
 {%endblock contenido %}
