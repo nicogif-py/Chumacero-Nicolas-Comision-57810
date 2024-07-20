@@ -15,17 +15,30 @@ Inicialmente, se han creado 4 clases para este modelo, las cuales son:
 - TrabajoDeGrado: Indica el tipo de trabajo de grado que realizan los alumnos, puede ser una tesis o un trabajo de investigación. También se señala si el mismo ha sido aprobado por asesores y jurados.
 - Sustentacion: Brinda la fecha en la que se realizará la sustentación, así como el lugar (presencial o virtual) y la mención (aprobado, muy bien y sobresaliente) que ha obtenido el alumno.
 
+## Funcionalidades
 
-## Enlaces
+Los usuarios pueden realizar un inicio de sesión para ingresar a su cuenta, en donde podrán cambiar la imagen de su "avatar", modificar sus datos personales como Nombre, Apellido, email y contraseña.
+Cuando terminen de hacer uso de su cuenta, pueden cerrar la sesión.
+En caso no cuenten con una cuenta creada, podrán crear una a través de la opción de "Registrarse".
 
-A través de los siguientes enlaces, puede entrar a los formularios de cada clase y también al formulario de búsqueda de Maestrías.
+Para acceder a las secciones del sitio, es necesario haber iniciado sesión. A continuación, se proporcionan 2 usuarios de prueba:
 
-http://localhost:8000/maestriasForm/
-http://localhost:8000/alumnoForm/
-http://localhost:8000/trabajodegradoForm/
-http://localhost:8000/sustentacionForm/
+Usuario: admin
+Contraseña: admin
 
-http://localhost:8000/buscarMaestrias/
+Usuario: nich
+Contraseña: nico12345
 
+En cada sección del sitio, podrán agregar, editar y eliminar un registro correspondiente. Para el caso de la sección "Maestrías", se ha colocado una opción de búsqueda a la que se accede haciendo click sobre el ícono de "lupa" y con ella podrán buscar la maestría deseada.
+
+Haciendo click sobre el botón "Acerca de mí" (presente en cada sección), podrán conocer más acerca del autor de este sitio.
+
+Finalmente, si desean volver a la página de inicio, pueden hacer click sobre el título "Proceso de graduación" que se encuentra siempre en una esquina.
+
+## Video demostrativo
+
+A continuación, comparto un vídeo en el cual podrán apreciar el uso, navegación y funcionalidad del sitio.
+
+https://youtu.be/X1tZ7jDS88I
 
 
